@@ -90,6 +90,7 @@ h2{font-weight:600;letter-spacing:-.005em}
 .d-body{max-width:var(--measure)}
 .d-body p + p{margin-top:.9em}
 .sources{font-family:var(--sans);font-size:.9rem;color:var(--grey)}
+.d-body .sources + .sources{margin-top:.2em}
 .links{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;font-family:var(--sans);font-size:1rem}
 .links button,.links a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.2em;color:var(--red)}
 .links button:hover,.links a:hover{text-decoration-color:currentColor}
