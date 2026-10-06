@@ -1,7 +1,7 @@
 /* Carte interactive : reprend les couleurs et polices de style.css. */
 .carte-page{display:flex;flex-direction:column;min-height:100vh}
 .carte-page .top{position:static}
-.carte-grille{flex:1;display:grid;grid-template-columns:minmax(19rem,25rem) minmax(0,1fr);min-height:0}
+.carte-grille{flex:1;display:grid;grid-template-columns:clamp(21rem,32vw,27rem) minmax(0,1fr);min-height:0}
 
 .volet{padding:1.6rem var(--pad) 1.6rem;border-right:1px solid var(--line);overflow-y:auto;max-height:calc(100vh - 3.6rem)}
 .volet h1{font-size:1.5rem;font-weight:600;line-height:1.2}
@@ -15,16 +15,23 @@
 .legende{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line);font-family:var(--sans)}
 .legende h2{font-family:var(--serif);font-size:1.15rem}
 .leg-sous{margin-top:.2rem;font-size:.88rem;line-height:1.4;color:var(--grey)}
-/* légende et graphique en un : une ligne par classe, avec sa barre */
-.legende ul{list-style:none;margin-top:.9rem;display:grid;gap:.55rem;font-size:.92rem}
-.legende li{display:grid;grid-template-columns:1.3rem minmax(0,1fr) auto;gap:.25rem .6rem;align-items:center;padding-left:.5rem;border-left:2px solid transparent}
-.legende li.actif{border-left-color:var(--red)}
-.legende li.actif .lib,.legende li.actif .val{font-weight:600}
-.pastille{width:1.3rem;height:.85rem;box-shadow:0 0 0 1px var(--line)}
-.lib{line-height:1.3}
-.val{font-variant-numeric:tabular-nums;color:var(--ink)}
-.barre{grid-column:2 / 4;height:.5rem;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:0 4px 4px 0}
-.barre i{display:block;height:100%;min-width:2px;border-radius:0 4px 4px 0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);transition:width .35s}
+.legende ul{list-style:none;margin-top:.8rem;display:grid;gap:.35rem;font-size:.92rem}
+.legende li{display:flex;align-items:center;gap:.6rem;line-height:1.3}
+.pastille{flex:none;width:1.4rem;height:.9rem;box-shadow:0 0 0 1px var(--line)}
+.pastille.trait{box-shadow:none;border:3px solid var(--ink)}
+
+/* graphique : même format pour toutes les cartes, une barre par classe de la légende */
+.graphique{margin-top:1.4rem;padding:1rem 1.1rem 1.1rem;border:1px solid var(--line);font-family:var(--sans)}
+.graph-etiquette{font-size:.8rem;font-weight:600;color:var(--red)}
+.graphique h2{font-family:var(--serif);font-size:1.15rem;line-height:1.25}
+.graphique ul{list-style:none;margin-top:1rem;display:grid;gap:.8rem;font-size:.92rem}
+.graphique li{display:grid;grid-template-columns:minmax(0,1fr) 3.2rem;gap:.3rem .6rem;align-items:center}
+.graphique .lib{grid-column:1 / 3;line-height:1.3}
+.graphique .barre{height:1.05rem;background:color-mix(in srgb,var(--line) 45%,transparent);border-radius:0 4px 4px 0}
+.graphique .barre i{display:block;height:100%;min-width:2px;border-radius:0 4px 4px 0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.14);transition:width .35s}
+.graphique .val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.graphique li.actif .lib{font-weight:600;color:var(--red)}
+.graphique li.actif .barre{outline:2px solid var(--ink);outline-offset:1px}
 .leg-note{margin-top:.8rem;font-size:.85rem;line-height:1.45;color:var(--grey)}
 .leg-note:empty{display:none}
 

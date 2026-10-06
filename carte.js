@@ -75,7 +75,7 @@ function selectionner(layer, html) {
   $("fiche").innerHTML = html;
   // repère, dans le graphique, la classe du quartier ou de la commune choisie
   const k = rang(vue, layer.feature.properties[vue.champ]);
-  [...$("leg-liste").children].forEach((li) => li.classList.toggle("actif", li.dataset.k === String(k)));
+  [...$("graph-liste").children].forEach((li) => li.classList.toggle("actif", li.dataset.k === String(k)));
 }
 
 function ficheIris(p) {
@@ -114,15 +114,18 @@ function afficher(v) {
   const lignes = repartition(v), max = Math.max(...lignes.map((l) => l.part));
   const unite = v.couche === "iris" ? "quartiers" : "communes";
   const part = (p) => (p > 0 && p < 0.5 ? "< 1 %" : `${fr(p)} %`);
-  $("leg-liste").innerHTML = lignes.map((l) => `
+  // légende de la carte
+  $("leg-liste").innerHTML = lignes.map((l) => `<li><span class="pastille" style="background:${l.couleur}"></span>${l.label}</li>`).join("")
+    + (v.couche === "communes" ? `<li><span class="pastille trait"></span>écart significatif (contour épais)</li>` : "");
+  $("leg-note").textContent = v.note || "";
+  // graphique, au même format pour toutes les cartes
+  $("graph-sous").textContent = `Part des 80 ans et plus du département qui vivent dans ${v.couche === "iris" ? "un quartier" : "une commune"} de chaque classe.`;
+  $("graph-liste").innerHTML = lignes.map((l) => `
     <li data-k="${l.k}" title="${l.n} ${unite} · ${fr(l.pop)} personnes de 80 ans et plus">
-      <span class="pastille" style="background:${l.couleur}"></span>
       <span class="lib">${l.label}</span>
-      <span class="val">${part(l.part)}</span>
       <span class="barre"><i style="width:${max ? (100 * l.part) / max : 0}%;background:${l.couleur}"></i></span>
+      <span class="val">${part(l.part)}</span>
     </li>`).join("");
-  $("leg-graph").textContent = `Les barres : part des 80 ans et plus du département qui vivent dans ${v.couche === "iris" ? "les quartiers" : "les communes"} de chaque classe.`;
-  $("leg-note").textContent = (v.couche === "communes" ? "Contour épais sur la carte : écart significatif. " : "") + (v.note || "");
   $("fiche").innerHTML = `<p class="fiche-vide">Clique sur la carte pour afficher les chiffres ${v.couche === "iris" ? "d'un quartier" : "d'une commune"}.</p>`;
   const iris = v.couche === "iris";
   if (iris) { carte.addLayer(couches.iris); couches.iris.setStyle(styleIris); } else { carte.removeLayer(couches.iris); }
