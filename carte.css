@@ -34,6 +34,17 @@
 .volet .sources{margin-top:1.4rem;line-height:1.45}
 
 .carte{min-height:70vh;background:var(--paper)}
+
+/* Tracés de la carte. Les séparations ont la couleur du fond : chaque quartier ressort comme une tuile,
+   et les communes sont séparées par un intervalle plus large. */
+.m-iris{stroke:var(--paper);stroke-width:1.3px;stroke-linejoin:round;stroke-opacity:1;transition:fill .3s,filter .15s}
+.m-iris:hover{filter:brightness(1.12) saturate(1.15)}
+.m-com{stroke:var(--paper);stroke-width:3.6px;stroke-linejoin:round;stroke-opacity:1;pointer-events:none;transition:fill .3s,filter .15s}
+.vue-communes .m-com{stroke-width:2.6px;pointer-events:auto}
+.vue-communes .m-com:hover{filter:brightness(1.1) saturate(1.1)}
+.vue-communes .m-signif{stroke:var(--ink);stroke-width:2.6px}
+.m-eau{stroke:#7fa6d6;stroke-width:2.2px;stroke-linecap:round;stroke-opacity:.9;pointer-events:none}
+.m-iris.choisi,.vue-communes .m-com.choisi{stroke:var(--ink);stroke-width:3px;filter:none}
 .leaflet-container{background:var(--paper);font-family:var(--sans)}
 .leaflet-interactive:focus{outline:none}
 .bulle{font-family:var(--sans);font-size:.85rem;padding:.2rem .5rem;border:0;border-radius:2px;background:#1c1a19;color:#f3f0ea;box-shadow:none}

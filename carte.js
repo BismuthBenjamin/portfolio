@@ -39,17 +39,17 @@ L.control.attribution({ prefix: false }).addAttribution("Fond : IGN · Réalisat
 const couches = {};
 let vue = VUES[0], choisi = null;
 
-const styleIris = (f) => ({ fillColor: couleur(vue, f.properties[vue.champ]), fillOpacity: 1, color: "#fff", weight: 0.4 });
-const styleCom = (f) => (vue.couche === "communes"
-  ? { fill: true, fillColor: couleur(vue, f.properties.ratio), fillOpacity: 1, color: "#333", weight: f.properties.signif === "sup" ? 3 : 1 }
-  : { fill: false, color: "#333", weight: 1.1 });
+// Les contours (séparations entre quartiers, survol, sélection) sont dessinés en CSS, dans carte.css :
+// ils prennent ainsi la couleur du fond, en clair comme en sombre.
+const styleIris = (f) => ({ className: "m-iris", fillColor: couleur(vue, f.properties[vue.champ]), fillOpacity: 1 });
+const styleCom = (f) => ({ className: "m-com" + (f.properties.signif === "sup" ? " m-signif" : ""),
+  fill: vue.couche === "communes", fillColor: couleur(vue, f.properties.ratio), fillOpacity: 1 });
 
 function selectionner(layer, html) {
-  if (choisi) choisi.groupe.resetStyle(choisi.layer);
-  choisi = { layer, groupe: vue.couche === "communes" ? couches.communes : couches.iris };
-  layer.setStyle({ color: "#111", weight: 3.2 });
+  if (choisi && choisi.getElement()) choisi.getElement().classList.remove("choisi");
+  choisi = layer;
   layer.bringToFront();
-  if (vue.couche === "iris") couches.communes.bringToFront();
+  layer.getElement().classList.add("choisi");
   $("fiche").innerHTML = html;
 }
 
@@ -93,9 +93,10 @@ function afficher(v) {
   const iris = v.couche === "iris";
   if (iris) { carte.addLayer(couches.iris); couches.iris.setStyle(styleIris); } else { carte.removeLayer(couches.iris); }
   couches.communes.setStyle(styleCom);
-  couches.communes.eachLayer((l) => { const el = l.getElement(); if (el) el.style.pointerEvents = iris ? "none" : "auto"; });
-  couches.eau.bringToFront();
+  $("carte").classList.toggle("vue-communes", !iris);
   couches.communes.bringToFront();
+  couches.communes.eachLayer((l) => { if (l.feature.properties.signif === "sup") l.bringToFront(); });
+  couches.eau.bringToFront();
 }
 
 Promise.all(["iris", "communes", "eau"].map((n) => fetch(`assets/data/${n}.geojson`).then((r) => r.json()))).then(([iris, communes, eau]) => {
@@ -106,7 +107,7 @@ Promise.all(["iris", "communes", "eau"].map((n) => fetch(`assets/data/${n}.geojs
       l.on("click", () => selectionner(l, ficheIris(f.properties)));
     }
   });
-  couches.eau = L.geoJSON(eau, { style: { color: "#7fa6d6", weight: 2, interactive: false } }).addTo(carte);
+  couches.eau = L.geoJSON(eau, { style: { className: "m-eau", fill: false }, interactive: false }).addTo(carte);
   couches.communes = L.geoJSON(communes, {
     style: styleCom,
     onEachFeature: (f, l) => {
