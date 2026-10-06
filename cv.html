@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV de Benjamin Bismuth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="cv.css">
+</head>
+<body>
+
+<script>
+/* ============================================================================
+   CONTENU DU CV. Tout se modifie ici, la mise en page suit toute seule.
+   - Chaque bloc entre { } est une ligne du CV : on peut en ajouter, en retirer
+     ou les changer d'ordre (ne pas oublier la virgule entre deux blocs).
+   - Un texte "À COMPLÉTER" s'affiche surligné pour ne pas l'oublier.
+   - Le CV doit tenir sur une page A4 : si on ajoute du texte, en retirer ailleurs.
+   ============================================================================ */
+const CV = {
+  nom: "Benjamin Bismuth",
+  titre: "Master de géographie · Géopolitique, SIG et télédétection",
+  photo: "assets/img/cv/photo.jpg",   // mettre "" pour un CV sans photo
+
+  // ---------- colonne de gauche ----------
+  contact: [
+    "BismuthSpeTD@gmail.com",
+    "Champigny-sur-Marne (94)",
+    "linkedin.com/in/benjamin-bismuth",
+    "22 ans"
+  ],
+
+  // Compétences : un groupe = un titre + une liste. On peut ajouter un groupe ou un élément librement.
+  competences: [
+    { groupe: "Cartographie et SIG",
+      items: ["QGIS", "ArcGIS Pro", "Sémiologie graphique"] },
+    { groupe: "Imagerie satellite",
+      items: ["Sentinel-1 et 2", "Google Earth Engine", "Copernicus Browser", "Google Earth Pro"] },
+    { groupe: "Données",
+      items: ["ACLED, OpenStreetMap, Insee", "Python (bases)", "Excel, Datawrapper"] },
+    { groupe: "Mise en page",
+      items: ["InDesign", "Illustrator", "Photoshop"] },
+    { groupe: "Analyse",
+      items: ["Géopolitique du Moyen-Orient", "Analyse territoriale", "Notes et synthèses"] }
+  ],
+
+  langues: ["Anglais B2", "Italien B2"],
+
+  interets: ["Veille géopolitique et renseignement en sources ouvertes", "Cartographie participative (OpenStreetMap)", "Science-fiction et fantasy"],
+
+  // ---------- colonne de droite ----------
+  accroche: "Actuellement en master 1 à Lyon 3 et Saint-Étienne, je recherche une alternance à partir de septembre 2027 pour le master 2 Géopolitique-GEOINT de Sorbonne Université. J'y apporte une formation de géographe passée par les classes préparatoires et une pratique régulière de la cartographie et de l'imagerie satellite.",
+
+  formation: [
+    { titre: "Master 1 SENTINELLES (santé, environnement, information spatio-temporelle)",
+      lieu: "Université Jean Moulin Lyon 3 et Université Jean Monnet Saint-Étienne",
+      dates: "2026-2027",
+      detail: "SIG et analyse spatiale, télédétection et traitement d'images, programmation et modélisation de données." },
+    { titre: "Licence 3 Géographie et aménagement",
+      lieu: "Sorbonne Université",
+      dates: "2025-2026",
+      detail: "SIG sous QGIS et ArcGIS Pro (17/20), télédétection, géographie du Moyen-Orient (16,5/20)." },
+    { titre: "Classes préparatoires littéraires : hypokhâgne, khâgne et khûbe",
+      lieu: "Lycée Marcelin Berthelot, Saint-Maur-des-Fossés",
+      dates: "2022-2025",
+      detail: "Histoire, géographie, philosophie et lettres ; dissertation et commentaire de documents." }
+  ],
+
+  // Travaux personnels : ceux du portfolio. Laisser la liste vide [] pour masquer la rubrique.
+  travaux: [],
+  portfolio: "",   // adresse du site une fois en ligne, par exemple "benjaminbismuth.github.io/portfolio"
+
+  experience: [
+    { titre: "Président de l'association Rose Griffon",
+      lieu: "Association culturelle et e-sport, loi 1901",
+      dates: "depuis 2024",
+      detail: "Direction d'une association de plus de 85 adhérents (budget, administration, base de données des membres) et organisation d'événements, de la logistique aux partenariats." },
+    { titre: "Vendeur en bijouterie",
+      lieu: "Lagardère : boutique du 2e étage de la tour Eiffel, Paris",
+      dates: "À COMPLÉTER",
+      detail: "Vente et conseil auprès d'une clientèle internationale, sur un site très fréquenté." },
+    { titre: "Conseiller de vente en horlogerie",
+      lieu: "Swatch Group : Champs-Élysées, Opéra, Louvre, Marais, Saint-Tropez",
+      dates: "2021-2025",
+      detail: "Conseil et fidélisation d'une clientèle internationale haut de gamme, dans cinq boutiques." }
+  ]
+};
+</script>
+
+<div class="outils">
+  <a href="index.html">← Retour au portfolio</a>
+  <button type="button" onclick="window.print()">Imprimer ou enregistrer en PDF</button>
+</div>
+
+<main class="page" id="cv"></main>
+
+<script src="cv.js"></script>
+</body>
+</html>

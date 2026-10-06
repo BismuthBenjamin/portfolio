@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benjamin Bismuth, géographe cartographe</title>
+  <meta name="description" content="Dossiers de géographie et de cartographie de Benjamin Bismuth : extension de la mine de Rubaya vue par satellite, géographie électorale d'Israël, canicule dans le Val-de-Marne, manifestations au Liban et à Bahreïn.">
+  <meta property="og:title" content="Benjamin Bismuth, géographe cartographe">
+  <meta property="og:description" content="Dossiers de géographie et de cartographie.">
+  <meta property="og:image" content="assets/img/israel/cover-01.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // appliqué avant l'affichage pour éviter un flash de la mauvaise couleur
+    // sombre par défaut, sauf si le visiteur a choisi le mode clair avec le bouton
+    let t = "dark";
+    try { t = localStorage.getItem("theme") || "dark"; } catch (e) {}
+    document.documentElement.dataset.theme = t;
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#">Benjamin Bismuth</a>
+  <div class="top-right">
+    <nav>
+      <a href="#cv">CV</a>
+      <a href="#dossiers">Dossiers</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme" type="button" id="theme" aria-label="Changer de thème (clair ou sombre)">
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro" id="cv">
+    <div class="intro-text">
+      <p class="intro-lead">
+        Étudiant en master de géographie (GAED, parcours Sentinelles).
+        Je réalise des dossiers de cartographie à partir de données publiques
+        et d'images satellite&nbsp;: élections, santé, conflits.
+      </p>
+      <p class="cv-actions">
+        <button class="cta" type="button" data-open="cv">Voir mon CV</button>
+        <a class="cta ghost" href="assets/pdf/cv-benjamin-bismuth.pdf" download>Télécharger le CV (PDF)</a>
+      </p>
+      <p class="intro-next"><a href="#dossiers">Mes dossiers ci-dessous</a></p>
+    </div>
+    <button class="plate cv-page" type="button" data-open="cv">
+      <img src="assets/img/cv/cv-01.jpg" alt="Aperçu du CV, cliquer pour l'agrandir" width="1200" height="1697">
+    </button>
+  </section>
+
+  <section class="dossier" id="dossiers">
+    <div class="d-text">
+      <h2>À quel rythme s'étend la mine de Rubaya&nbsp;?</h2>
+      <p class="meta">GEOINT, images satellite, Nord-Kivu, 2026 · 18 pages, 6 figures</p>
+      <div class="d-body">
+        <p>
+          Rubaya est une mine de coltan de l'est du Congo, contrôlée par le M23 depuis avril 2024.
+          Le dossier teste une idée souvent avancée&nbsp;: un groupe armé qui tient une mine la fait
+          creuser davantage. Il mesure sur des images Sentinel-2 la surface gagnée chaque année,
+          de 2021 à 2025.
+        </p>
+        <p>
+          La mine gagne 30 à 60 hectares, dont 33,5 entre l'été 2024 et l'été 2025, presque quatre
+          fois plus que les années précédentes. Mais l'accélération ne commence qu'après la prise de
+          Goma, neuf mois après celle de la mine, et le prix du coltan ne l'explique pas.
+        </p>
+        <p class="sources">Données&nbsp;: Copernicus Sentinel-2, Centre for Information Resilience, USGS. Traitement Google Earth Engine.</p>
+        <p class="links">
+          <button type="button" data-open="rubaya">Feuilleter le dossier</button>
+          <a href="assets/pdf/rubaya.pdf" download>Télécharger le PDF (4&nbsp;Mo)</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key">
+      <button class="plate" type="button" data-open="rubaya" data-page="0" aria-label="Ouvrir le dossier">
+        <img src="assets/img/rubaya/cover-01.jpg" alt="Couverture du dossier" width="826" height="1169">
+      </button>
+      <button class="plate key-page" type="button" data-open="rubaya" data-page="4" aria-label="Ouvrir le dossier à cette page">
+        <img src="assets/img/rubaya/s-05.jpg" alt="Image satellite : en jaune, les terrains couverts de végétation en 2021 et nus en 2025 autour de la mine de Rubaya" width="1500" height="1061">
+      </button>
+      <figcaption>Figure 3. En jaune, les terrains couverts de végétation en 2021 et nus en 2025.</figcaption>
+    </figure>
+  </section>
+
+  <section class="dossier">
+    <div class="d-text">
+      <h2>Trois Israël et une frontière invisible</h2>
+      <p class="meta">Géographie électorale, 2026 · 28 pages, 10 cartes</p>
+      <div class="d-body">
+        <p>
+          Israël vote comme une circonscription unique, à la proportionnelle intégrale.
+          Le dossier montre pourtant que le territoire dit presque tout du vote,
+          et regarde aussi ce qu'il dit de ceux qui n'ont pas le droit de voter.
+        </p>
+        <p>
+          En 2015 comme en 2022, le bloc de Benyamin Netanyahou obtient 48,4&nbsp;% des voix.
+          En 2022, cela lui suffit pour 64 sièges sur 120&nbsp;: près de 290&nbsp;000 voix
+          se sont perdues sous le seuil de 3,25&nbsp;%.
+        </p>
+        <p class="sources">Données&nbsp;: Commission électorale centrale, Bureau central de statistique, OCHA. Traitement Python, cartes QGIS.</p>
+        <p class="links">
+          <button type="button" data-open="israel">Feuilleter le dossier</button>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key">
+      <button class="plate" type="button" data-open="israel" data-page="0" aria-label="Ouvrir le dossier">
+        <img src="assets/img/israel/cover-01.jpg" alt="Couverture du dossier" width="900" height="1274">
+      </button>
+      <button class="plate key-page" type="button" data-open="israel" data-page="6" aria-label="Ouvrir le dossier à cette page">
+        <img src="assets/img/israel/s-07.jpg" alt="Carte : taux de participation au scrutin du 1er novembre 2022, par localité" width="1500" height="1062">
+      </button>
+      <figcaption>Figure 4. Taux de participation au scrutin du 1<sup>er</sup> novembre 2022, par localité.</figcaption>
+    </figure>
+  </section>
+
+  <section class="dossier">
+    <div class="d-text">
+      <h2>Où la canicule tue-t-elle dans le Val-de-Marne&nbsp;?</h2>
+      <p class="meta">Santé et environnement, Val-de-Marne, 2026 · 18 pages, 6 cartes</p>
+      <div class="d-body">
+        <p>
+          Le risque canicule des personnes âgées se trouve-t-il là où elles vivent nombreuses&nbsp;?
+          En croisant l'âge, l'isolement et la chaleur nocturne, 23 IRIS ressortent, dont 8 à
+          Vincennes et Saint-Mandé.
+        </p>
+        <p>
+          Mais ce n'est pas là que la mortalité augmente&nbsp;: pendant les canicules de 2018 à 2023,
+          les décès progressent de 18&nbsp;% dans les communes modestes et reculent de 1&nbsp;%
+          dans les communes aisées, pourtant plus âgées.
+        </p>
+        <p class="sources">Données&nbsp;: Insee, Institut Paris Region, IGN. Cartes QGIS.</p>
+        <p class="links">
+          <button type="button" data-open="canicule">Feuilleter le dossier</button>
+          <a href="assets/pdf/canicule.pdf" download>Télécharger le PDF (13&nbsp;Mo)</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key">
+      <button class="plate" type="button" data-open="canicule" data-page="0" aria-label="Ouvrir le dossier">
+        <img src="assets/img/canicule/cover-01.jpg" alt="Couverture du dossier" width="900" height="1273" loading="lazy">
+      </button>
+      <button class="plate key-page" type="button" data-open="canicule" data-page="5" aria-label="Ouvrir le dossier à cette page">
+        <img src="assets/img/canicule/s-06.jpg" alt="Carte : nombre de facteurs de risque élevés (âge, isolement, chaleur) par IRIS du Val-de-Marne" width="1500" height="1061" loading="lazy">
+      </button>
+      <figcaption>Figure 4. Nombre de facteurs de risque élevés (âge, isolement, chaleur nocturne) par IRIS.</figcaption>
+    </figure>
+  </section>
+
+  <section class="dossier">
+    <div class="d-text">
+      <h2>Protester au Liban et à Bahreïn</h2>
+      <p class="meta">Note exploratoire, 2026 · 3 pages, 3 graphiques</p>
+      <div class="d-body">
+        <p>
+          Un premier travail sur les données de l'ACLED, qui recense jour par jour manifestations
+          et violences politiques&nbsp;: combien de manifestations entre 2016 et 2026, avec quelle part
+          de violence, et où&nbsp;?
+        </p>
+        <p>
+          Les deux pays suivent des trajectoires inverses. Au Liban, le nombre de manifestations est
+          multiplié par huit en 2019, l'année du soulèvement d'octobre, avant de retomber à partir de 2022.
+          À Bahreïn, plus de 3&nbsp;000 manifestations par an en 2016 et 2017, puis moins de 300 en 2020,
+          après la dissolution des mouvements d'opposition.
+        </p>
+        <p class="sources">Données&nbsp;: ACLED, extraites le 29 août 2026.</p>
+        <p class="links">
+          <button type="button" data-open="liban-bahrein">Feuilleter la note</button>
+          <a href="assets/pdf/liban-bahrein.pdf" download>Télécharger le PDF (0,5&nbsp;Mo)</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key">
+      <button class="plate" type="button" data-open="liban-bahrein" data-page="0" aria-label="Ouvrir la note">
+        <img src="assets/img/liban-bahrein/cover-01.jpg" alt="Couverture de la note" width="826" height="1169" loading="lazy">
+      </button>
+      <button class="plate key-page" type="button" data-open="liban-bahrein" data-page="1" aria-label="Ouvrir la note à cette page">
+        <img src="assets/img/liban-bahrein/s-02.jpg" alt="Graphique : nombre de manifestations et part des manifestations violentes au Liban, 2016-2026" width="1500" height="1061" loading="lazy">
+      </button>
+      <figcaption>Figure 1. Nombre de manifestations et part des manifestations violentes au Liban, 2016-2026.</figcaption>
+    </figure>
+  </section>
+
+  <section class="about" id="apropos">
+    <h2>À propos</h2>
+    <div class="d-body">
+      <p>
+        Je travaille sous QGIS pour la cartographie et en Python pour préparer les données.
+        Chaque dossier part d'une question précise et d'une hypothèse que les données
+        peuvent contredire&nbsp;: c'est ce qui s'est passé pour la canicule.
+      </p>
+      <p>
+        Les choix de méthode, les seuils et les limites des données sont écrits dans le dossier
+        lui-même, à côté des cartes concernées.
+      </p>
+    </div>
+  </section>
+
+  <section class="about" id="contact">
+    <h2>Contact</h2>
+    <div class="d-body">
+      <p>
+        <a href="mailto:BismuthSpeTD@gmail.com">BismuthSpeTD@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/benjamin-bismuth" rel="noopener">LinkedIn</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  © 2026 Benjamin Bismuth. Crédits photographiques dans les dossiers.
+</footer>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Lecteur de dossier" hidden>
+  <div class="v-bar">
+    <p class="v-title"><span id="v-name"></span> <span id="v-count" aria-live="polite"></span></p>
+    <div class="v-tools">
+      <a id="v-pdf" href="#" download>PDF</a>
+      <button type="button" id="v-close">Fermer</button>
+    </div>
+  </div>
+
+  <div class="v-stage">
+    <button class="v-nav prev" type="button" id="v-prev" aria-label="Page précédente">‹</button>
+    <figure class="v-fig">
+      <img id="v-img" alt="">
+    </figure>
+    <button class="v-nav next" type="button" id="v-next" aria-label="Page suivante">›</button>
+  </div>
+
+  <div class="v-thumbs" id="v-thumbs" role="tablist" aria-label="Pages du dossier"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
