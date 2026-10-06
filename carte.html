@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="carte.css?v=4">
+  <link rel="stylesheet" href="carte.css?v=5">
 </head>
 <body class="carte-page">
 
@@ -38,7 +38,7 @@
 <main class="carte-grille">
   <aside class="volet">
     <h1>Où la canicule tue-t-elle dans le Val-de-Marne&nbsp;?</h1>
-    <p class="chapo">Les cartes du dossier, à explorer quartier par quartier. Choisis une carte, puis clique sur un quartier ou une commune pour lire ses chiffres.</p>
+    <p class="chapo">Les cartes du dossier, à explorer quartier par quartier. Choisir une carte, puis cliquer sur un quartier ou une commune pour lire ses chiffres.</p>
 
     <div class="onglets" id="onglets" role="tablist" aria-label="Choix de la carte"></div>
 
@@ -49,24 +49,26 @@
       <p class="leg-note" id="leg-note"></p>
     </section>
 
+    <section class="fiche" id="fiche" aria-live="polite">
+      <p class="fiche-vide">Cliquer sur la carte pour afficher les chiffres d'un quartier.</p>
+    </section>
+
+    <p class="sources">Données&nbsp;: Insee (recensement 2021, Filosofi 2021, décès 2018-2023), Institut Paris Region (îlots de chaleur), IGN. Les quartiers sont les IRIS de l'Insee.</p>
+  </aside>
+
+  <div class="carte-zone">
+    <div class="carte" id="carte" aria-label="Carte interactive du Val-de-Marne"></div>
+    <!-- encart posé sur la carte, en haut à droite -->
     <section class="graphique" aria-live="polite">
       <p class="graph-etiquette">Graphique</p>
       <h2>Où vivent les 80 ans et plus&nbsp;?</h2>
       <p class="leg-sous" id="graph-sous"></p>
       <ul id="graph-liste"></ul>
     </section>
-
-    <section class="fiche" id="fiche" aria-live="polite">
-      <p class="fiche-vide">Clique sur la carte pour afficher les chiffres d'un quartier.</p>
-    </section>
-
-    <p class="sources">Données&nbsp;: Insee (recensement 2021, Filosofi 2021, décès 2018-2023), Institut Paris Region (îlots de chaleur), IGN. Les quartiers sont les IRIS de l'Insee.</p>
-  </aside>
-
-  <div class="carte" id="carte" aria-label="Carte interactive du Val-de-Marne"></div>
+  </div>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="carte.js?v=4"></script>
+<script src="carte.js?v=5"></script>
 </body>
 </html>

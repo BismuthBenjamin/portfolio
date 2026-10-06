@@ -145,6 +145,15 @@ $("theme").addEventListener("click", () => {
   try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
 });
 
+// invitation à ouvrir la carte interactive : affichée après un court délai, jamais par-dessus le lecteur,
+// et plus du tout une fois fermée (ou une fois la carte ouverte)
+const invite = $("invite");
+const inviteVue = () => { try { return localStorage.getItem("invite-carte") === "vue"; } catch (e) { return false; } };
+const inviteFermer = () => { invite.hidden = true; try { localStorage.setItem("invite-carte", "vue"); } catch (e) {} };
+if (!inviteVue()) setTimeout(() => { if (viewer.hidden) invite.hidden = false; }, 1500);
+$("invite-fermer").addEventListener("click", inviteFermer);
+invite.querySelector("a").addEventListener("click", inviteFermer);
+
 // lien direct : monsite/#israel ouvre le lecteur
 const hash = location.hash.slice(1);
 if (DOSSIERS[hash]) open(hash);

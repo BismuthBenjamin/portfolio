@@ -126,7 +126,7 @@ function afficher(v) {
       <span class="barre"><i style="width:${max ? (100 * l.part) / max : 0}%;background:${l.couleur}"></i></span>
       <span class="val">${part(l.part)}</span>
     </li>`).join("");
-  $("fiche").innerHTML = `<p class="fiche-vide">Clique sur la carte pour afficher les chiffres ${v.couche === "iris" ? "d'un quartier" : "d'une commune"}.</p>`;
+  $("fiche").innerHTML = `<p class="fiche-vide">Cliquer sur la carte pour afficher les chiffres ${v.couche === "iris" ? "d'un quartier" : "d'une commune"}.</p>`;
   const iris = v.couche === "iris";
   if (iris) { carte.addLayer(couches.iris); couches.iris.setStyle(styleIris); } else { carte.removeLayer(couches.iris); }
   couches.communes.setStyle(styleCom);
@@ -156,7 +156,10 @@ Promise.all(["iris", "communes", "eau"].map((n) => fetch(`assets/data/${n}.geojs
   }).addTo(carte);
 
   const emprise = couches.communes.getBounds();
-  carte.fitBounds(emprise, { padding: [12, 12] });
+  // sur grand écran, on laisse à droite la place de l'encart du graphique
+  const encart = document.querySelector(".graphique");
+  const pose = getComputedStyle(encart).position === "absolute";
+  carte.fitBounds(emprise, { paddingTopLeft: [12, 12], paddingBottomRight: [pose ? encart.offsetWidth + 28 : 12, 12] });
   carte.setMaxBounds(emprise.pad(0.35));
   carte.setMinZoom(carte.getZoom() - 0.5);
 

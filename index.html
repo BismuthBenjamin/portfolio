@@ -19,7 +19,7 @@
     try { t = localStorage.getItem("theme") || "dark"; } catch (e) {}
     document.documentElement.dataset.theme = t;
   </script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -251,6 +251,17 @@
   <div class="v-thumbs" id="v-thumbs" role="tablist" aria-label="Pages du dossier"></div>
 </div>
 
-<script src="app.js"></script>
+<!-- invitation à ouvrir la carte interactive : apparaît en bas à droite, se ferme, et ne revient pas une fois fermée -->
+<aside class="invite" id="invite" aria-label="Carte interactive" hidden>
+  <p class="invite-etiquette">Nouveau · carte interactive</p>
+  <p class="invite-titre">Le Val-de-Marne, quartier par quartier</p>
+  <p class="invite-texte">Âge, isolement, pauvreté, décès pendant les canicules&nbsp;: cinq cartes à explorer d'un clic.</p>
+  <p class="invite-actions">
+    <a class="cta" href="carte.html">Ouvrir la carte</a>
+    <button type="button" id="invite-fermer">Plus tard</button>
+  </p>
+</aside>
+
+<script src="app.js?v=2"></script>
 </body>
 </html>
