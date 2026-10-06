@@ -45,12 +45,37 @@ const styleIris = (f) => ({ className: "m-iris", fillColor: couleur(vue, f.prope
 const styleCom = (f) => ({ className: "m-com" + (f.properties.signif === "sup" ? " m-signif" : ""),
   fill: vue.couche === "communes", fillColor: couleur(vue, f.properties.ratio), fillOpacity: 1 });
 
+const donnees = {};
+// rang de la classe d'une valeur dans la vue courante (-1 : pas de donnée)
+const rang = (v, val) => (val == null ? -1 : v.classes.findIndex((c) => val < c[0]));
+
+// Graphique commun à toutes les cartes : part des 80 ans et plus du département qui vivent
+// dans les quartiers (ou les communes) de chaque classe de la légende.
+function repartition(v) {
+  const lignes = v.classes.map((c, k) => ({ k, label: c[1], couleur: c[2], n: 0, pop: 0 }));
+  const sans = { k: -1, label: "zone d'activité ou sans données", couleur: GRIS, n: 0, pop: 0 };
+  let total = 0;
+  donnees[v.couche].features.forEach((f) => {
+    const k = rang(v, f.properties[v.champ]), pop = f.properties.pop80 || 0;
+    const l = k < 0 ? sans : lignes[k];
+    l.n += 1;
+    l.pop += pop;
+    total += pop;
+  });
+  if (v.couche === "iris") lignes.push(sans);
+  lignes.forEach((l) => { l.part = total ? (100 * l.pop) / total : 0; });
+  return lignes;
+}
+
 function selectionner(layer, html) {
   if (choisi && choisi.getElement()) choisi.getElement().classList.remove("choisi");
   choisi = layer;
   layer.bringToFront();
   layer.getElement().classList.add("choisi");
   $("fiche").innerHTML = html;
+  // repère, dans le graphique, la classe du quartier ou de la commune choisie
+  const k = rang(vue, layer.feature.properties[vue.champ]);
+  [...$("leg-liste").children].forEach((li) => li.classList.toggle("actif", li.dataset.k === String(k)));
 }
 
 function ficheIris(p) {
@@ -86,9 +111,18 @@ function afficher(v) {
   [...$("onglets").children].forEach((b) => b.setAttribute("aria-selected", b.dataset.id === v.id));
   $("leg-titre").textContent = v.titre;
   $("leg-sous").textContent = v.sous;
-  $("leg-liste").innerHTML = v.classes.map((c) => `<li><span style="background:${c[2]}"></span>${c[1]}</li>`).join("")
-    + (v.couche === "iris" ? `<li><span style="background:${GRIS}"></span>zone d'activité ou sans données</li>` : `<li><span class="trait"></span>écart significatif (contour épais)</li>`);
-  $("leg-note").textContent = v.note || "";
+  const lignes = repartition(v), max = Math.max(...lignes.map((l) => l.part));
+  const unite = v.couche === "iris" ? "quartiers" : "communes";
+  const part = (p) => (p > 0 && p < 0.5 ? "< 1 %" : `${fr(p)} %`);
+  $("leg-liste").innerHTML = lignes.map((l) => `
+    <li data-k="${l.k}" title="${l.n} ${unite} · ${fr(l.pop)} personnes de 80 ans et plus">
+      <span class="pastille" style="background:${l.couleur}"></span>
+      <span class="lib">${l.label}</span>
+      <span class="val">${part(l.part)}</span>
+      <span class="barre"><i style="width:${max ? (100 * l.part) / max : 0}%;background:${l.couleur}"></i></span>
+    </li>`).join("");
+  $("leg-graph").textContent = `Les barres : part des 80 ans et plus du département qui vivent dans ${v.couche === "iris" ? "les quartiers" : "les communes"} de chaque classe.`;
+  $("leg-note").textContent = (v.couche === "communes" ? "Contour épais sur la carte : écart significatif. " : "") + (v.note || "");
   $("fiche").innerHTML = `<p class="fiche-vide">Clique sur la carte pour afficher les chiffres ${v.couche === "iris" ? "d'un quartier" : "d'une commune"}.</p>`;
   const iris = v.couche === "iris";
   if (iris) { carte.addLayer(couches.iris); couches.iris.setStyle(styleIris); } else { carte.removeLayer(couches.iris); }
@@ -100,6 +134,8 @@ function afficher(v) {
 }
 
 Promise.all(["iris", "communes", "eau"].map((n) => fetch(`assets/data/${n}.geojson`).then((r) => r.json()))).then(([iris, communes, eau]) => {
+  donnees.iris = iris;
+  donnees.communes = communes;
   couches.iris = L.geoJSON(iris, {
     style: styleIris,
     onEachFeature: (f, l) => {
