@@ -4,8 +4,8 @@
   // un texte "À COMPLÉTER" est surligné pour qu'on ne l'oublie pas avant d'envoyer le CV
   const txt = (s) => (/À COMPLÉTER/.test(s) ? `<mark>${esc(s)}</mark>` : esc(s));
   const liste = (items) => `<ul>${items.map((i) => `<li>${txt(i)}</li>`).join("")}</ul>`;
-
-  const bloc = (titre, contenu) => `<section class="bloc"><h2>${esc(titre)}</h2>${contenu}</section>`;
+  const bloc = (titre, contenu) => `<section class="bloc"><h2><span>${esc(titre)}</span></h2>${contenu}</section>`;
+  const plein = (a) => a && a.length;
 
   const entree = (e) => `
     <div class="entree">
@@ -14,29 +14,34 @@
         ${e.dates ? `<span class="dates">${txt(e.dates)}</span>` : ""}
       </div>
       ${e.lieu ? `<p class="lieu">${txt(e.lieu)}</p>` : ""}
-      ${e.detail ? `<p>${txt(e.detail)}</p>` : ""}
+      ${plein(e.points) ? liste(e.points) : ""}
+      ${e.cours ? `<p class="cours"><b>Cours :</b> ${txt(e.cours)}</p>` : ""}
     </div>`;
 
-  // colonne de gauche : photo, contact, compétences, langues, centres d'intérêt
-  let cote = CV.photo ? `<img class="photo" src="${esc(CV.photo)}" alt="Photo de ${esc(CV.nom)}">` : "";
-  cote += bloc("Contact", liste(CV.contact));
-  cote += bloc("Compétences", CV.competences.map((g) => `<h3>${esc(g.groupe)}</h3>${liste(g.items)}`).join(""));
-  if (CV.langues && CV.langues.length) cote += bloc("Langues", liste(CV.langues));
-  if (CV.interets && CV.interets.length) cote += bloc("Centres d'intérêt", liste(CV.interets));
+  // bandeau : poste recherché, nom, contact, photo
+  const bandeau = `
+    <header class="bandeau">
+      <div>
+        <h1>${esc(CV.poste)}</h1>
+        <p class="nom">${esc(CV.nom)}</p>
+        <p class="contact">${CV.contact.map((c) => `<span>${esc(c)}</span>`).join("")}</p>
+      </div>
+      ${CV.photo ? `<img class="photo" src="${esc(CV.photo)}" alt="Photo de ${esc(CV.nom)}">` : ""}
+    </header>`;
 
-  // colonne de droite : nom, profil, formation, travaux, expérience
-  let corps = `
-    <header class="entete">
-      <h1>${esc(CV.nom)}</h1>
-      <p class="titre">${esc(CV.titre)}</p>
-    </header>
-    <p class="accroche">${txt(CV.accroche)}</p>`;
-  corps += bloc("Formation", CV.formation.map(entree).join(""));
-  if (CV.travaux && CV.travaux.length) {
-    const lien = CV.portfolio ? `<p class="lien">Dossiers complets : ${esc(CV.portfolio)}</p>` : "";
-    corps += bloc("Travaux", CV.travaux.map(entree).join("") + lien);
+  const principal = bloc("Expérience professionnelle", CV.experience.map(entree).join(""))
+    + bloc("Formation", CV.formation.map(entree).join(""));
+
+  let cote = "";
+  if (plein(CV.savoirEtre)) cote += bloc("Savoir-être", liste(CV.savoirEtre));
+  if (plein(CV.competences)) cote += bloc("Compétences", liste(CV.competences));
+  if (plein(CV.logiciels)) {
+    cote += bloc("Logiciels", `<ul>${CV.logiciels.map((l) => `<li><b>${esc(l.nom)}</b>${l.usage ? ` : ${esc(l.usage)}` : ""}</li>`).join("")}</ul>`);
   }
-  corps += bloc("Expérience", CV.experience.map(entree).join(""));
+  if (plein(CV.langues)) cote += bloc("Langues", liste(CV.langues));
+  if (plein(CV.interets)) cote += bloc("Intérêts", liste(CV.interets));
 
-  document.getElementById("cv").innerHTML = `<aside class="cote">${cote}</aside><div class="corps">${corps}</div>`;
+  document.getElementById("cv").innerHTML = bandeau
+    + `<div class="profil">${bloc("Profil", `<p>${txt(CV.profil)}</p>`)}</div>`
+    + `<div class="colonnes"><div class="principal">${principal}</div><aside class="cote">${cote}</aside></div>`;
 })();

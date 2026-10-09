@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cv.css">
+  <link rel="stylesheet" href="cv.css?v=3">
 </head>
 <body>
 
@@ -16,15 +16,15 @@
    CONTENU DU CV. Tout se modifie ici, la mise en page suit toute seule.
    - Chaque bloc entre { } est une ligne du CV : on peut en ajouter, en retirer
      ou les changer d'ordre (ne pas oublier la virgule entre deux blocs).
+   - Une liste vide [] masque la rubrique correspondante.
    - Un texte "À COMPLÉTER" s'affiche surligné pour ne pas l'oublier.
    - Le CV doit tenir sur une page A4 : si on ajoute du texte, en retirer ailleurs.
    ============================================================================ */
 const CV = {
+  // ---------- bandeau du haut ----------
+  poste: "Alternance GEOINT et cartographie",   // le grand titre : le poste recherché
   nom: "Benjamin Bismuth",
-  titre: "Master de géographie · Géopolitique, SIG et télédétection",
-  photo: "assets/img/cv/photo.jpg",   // mettre "" pour un CV sans photo
-
-  // ---------- colonne de gauche ----------
+  photo: "assets/img/cv/photo.jpg",              // mettre "" pour un CV sans photo
   contact: [
     "BismuthSpeTD@gmail.com",
     "Champigny-sur-Marne (94)",
@@ -32,60 +32,59 @@ const CV = {
     "22 ans"
   ],
 
-  // Compétences : un groupe = un titre + une liste. On peut ajouter un groupe ou un élément librement.
-  competences: [
-    { groupe: "Cartographie et SIG",
-      items: ["QGIS", "ArcGIS Pro", "Sémiologie graphique"] },
-    { groupe: "Imagerie satellite",
-      items: ["Sentinel-1 et 2", "Google Earth Engine", "Copernicus Browser", "Google Earth Pro"] },
-    { groupe: "Données",
-      items: ["ACLED, OpenStreetMap, Insee", "Python (bases)", "Excel, Datawrapper"] },
-    { groupe: "Mise en page",
-      items: ["InDesign", "Illustrator", "Photoshop"] },
-    { groupe: "Analyse",
-      items: ["Géopolitique du Moyen-Orient", "Analyse territoriale", "Notes et synthèses"] }
-  ],
+  // ---------- profil ----------
+  profil: "Actuellement en master 1 à Lyon 3 et Saint-Étienne, je recherche une alternance à partir de septembre 2027 pour le master 2 Géopolitique-GEOINT de Sorbonne Université. J'y apporte une formation de géographe passée par les classes préparatoires et une pratique régulière de la cartographie et de l'imagerie satellite.",
 
-  langues: ["Anglais B2", "Italien B2"],
-
-  interets: ["Veille géopolitique et renseignement en sources ouvertes", "Cartographie participative (OpenStreetMap)", "Science-fiction et fantasy"],
-
-  // ---------- colonne de droite ----------
-  accroche: "Actuellement en master 1 à Lyon 3 et Saint-Étienne, je recherche une alternance à partir de septembre 2027 pour le master 2 Géopolitique-GEOINT de Sorbonne Université. J'y apporte une formation de géographe passée par les classes préparatoires et une pratique régulière de la cartographie et de l'imagerie satellite.",
-
-  formation: [
-    { titre: "Master 1 SENTINELLES (santé, environnement, information spatio-temporelle)",
-      lieu: "Université Jean Moulin Lyon 3 et Université Jean Monnet Saint-Étienne",
-      dates: "2026-2027",
-      detail: "SIG et analyse spatiale, télédétection et traitement d'images, programmation et modélisation de données." },
-    { titre: "Licence 3 Géographie et aménagement",
-      lieu: "Sorbonne Université",
-      dates: "2025-2026",
-      detail: "SIG sous QGIS et ArcGIS Pro (17/20), télédétection, géographie du Moyen-Orient (16,5/20)." },
-    { titre: "Classes préparatoires littéraires : hypokhâgne, khâgne et khûbe",
-      lieu: "Lycée Marcelin Berthelot, Saint-Maur-des-Fossés",
-      dates: "2022-2025",
-      detail: "Histoire, géographie, philosophie et lettres ; dissertation et commentaire de documents." }
-  ],
-
-  // Travaux personnels : ceux du portfolio. Laisser la liste vide [] pour masquer la rubrique.
-  travaux: [],
-  portfolio: "",   // adresse du site une fois en ligne, par exemple "benjaminbismuth.github.io/portfolio"
-
+  // ---------- colonne principale ----------
   experience: [
     { titre: "Président de l'association Rose Griffon",
       lieu: "Association culturelle et e-sport, loi 1901",
       dates: "depuis 2024",
-      detail: "Direction d'une association de plus de 85 adhérents (budget, administration, base de données des membres) et organisation d'événements, de la logistique aux partenariats." },
+      points: ["Direction d'une association de plus de 85 adhérents : budget, administration, base de données des membres.",
+               "Organisation d'événements, de la logistique aux partenariats."] },
     { titre: "Vendeur en bijouterie",
       lieu: "Lagardère : boutique du 2e étage de la tour Eiffel, Paris",
       dates: "été 2026",
-      detail: "Vente et conseil auprès d'une clientèle internationale, sur un site très fréquenté." },
+      points: ["Vente et conseil auprès d'une clientèle internationale, sur un site très fréquenté."] },
     { titre: "Conseiller de vente en horlogerie",
       lieu: "Swatch Group : Champs-Élysées, Opéra, Louvre, Marais, Saint-Tropez",
       dates: "2021-2025",
-      detail: "Conseil et fidélisation d'une clientèle internationale haut de gamme, dans cinq boutiques." }
-  ]
+      points: ["Conseil et fidélisation d'une clientèle internationale haut de gamme, dans cinq boutiques."] }
+  ],
+
+  // "cours" : les enseignements suivis, affichés sous chaque formation
+  formation: [
+    { titre: "Master 1 SENTINELLES (santé, environnement, information spatio-temporelle)",
+      lieu: "Université Jean Moulin Lyon 3 et Université Jean Monnet Saint-Étienne",
+      dates: "2026-2027",
+      cours: "SIG et analyse spatiale, télédétection et traitement d'images, programmation et modélisation de données." },
+    { titre: "Licence 3 Géographie et aménagement",
+      lieu: "Sorbonne Université",
+      dates: "2025-2026",
+      cours: "SIG sous QGIS et ArcGIS Pro (17/20), télédétection, géographie du Moyen-Orient (16,5/20)." },
+    { titre: "Classes préparatoires littéraires : hypokhâgne, khâgne et khûbe",
+      lieu: "Lycée Marcelin Berthelot, Saint-Maur-des-Fossés",
+      dates: "2022-2025",
+      cours: "Histoire, géographie, philosophie et lettres ; dissertation et commentaire de documents." }
+  ],
+
+  // ---------- colonne de droite ----------
+  savoirEtre: [],   // à remplir si tu veux cette rubrique, par exemple ["Rigueur", "Autonomie"]
+
+  competences: ["Géopolitique du Moyen-Orient", "Analyse territoriale", "Sémiologie graphique", "Imagerie Sentinel-1 et 2", "Données ouvertes (ACLED, OpenStreetMap, Insee)", "Notes et synthèses"],
+
+  logiciels: [
+    { nom: "QGIS, ArcGIS Pro", usage: "cartographie et SIG" },
+    { nom: "Google Earth Engine", usage: "imagerie satellite" },
+    { nom: "Copernicus Browser, Google Earth Pro", usage: "" },
+    { nom: "InDesign, Illustrator, Photoshop", usage: "mise en page" },
+    { nom: "Excel, Datawrapper", usage: "données et graphiques" },
+    { nom: "Python", usage: "bases" }
+  ],
+
+  langues: ["Anglais B2", "Italien B2"],
+
+  interets: ["Veille géopolitique et renseignement en sources ouvertes", "Cartographie participative (OpenStreetMap)", "Science-fiction et fantasy"]
 };
 </script>
 
@@ -96,6 +95,6 @@ const CV = {
 
 <main class="page" id="cv"></main>
 
-<script src="cv.js"></script>
+<script src="cv.js?v=3"></script>
 </body>
 </html>
