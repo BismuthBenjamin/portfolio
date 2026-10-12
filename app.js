@@ -1,6 +1,30 @@
 // Lecteur de dossiers en double page. Pour ajouter un dossier : déposer les images
 // dans assets/img/<id>/ et ajouter une entrée ci-dessous.
 const DOSSIERS = {
+  "journal-1": {
+    name: "Journal de bord 1 · Peut-on localiser une photo grâce aux montagnes ?",
+    pdf: "assets/pdf/ligne-de-crete-journal-1.pdf",
+    dir: "assets/img/journal-1/",
+    first: 2, last: 6,                // s-06.jpg = 4e de couverture
+    cover: "cover-01.jpg",
+    alt: "Journal de bord 1, élaboration du projet"
+  },
+  "journal-2": {
+    name: "Journal de bord 2 · Premier prototype",
+    pdf: "assets/pdf/ligne-de-crete-journal-2.pdf",
+    dir: "assets/img/journal-2/",
+    first: 2, last: 6,
+    cover: "cover-01.jpg",
+    alt: "Journal de bord 2, premier prototype"
+  },
+  "journal-3": {
+    name: "Journal de bord 3 · Mesurer pour de vrai, puis apprendre à une IA",
+    pdf: "assets/pdf/ligne-de-crete-journal-3.pdf",
+    dir: "assets/img/journal-3/",
+    first: 2, last: 6,
+    cover: "cover-01.jpg",
+    alt: "Journal de bord 3, mesurer puis apprendre"
+  },
   rubaya: {
     name: "À quel rythme s'étend la mine de Rubaya ?",
     pdf: "assets/pdf/rubaya.pdf",
@@ -153,6 +177,32 @@ const inviteFermer = () => { invite.hidden = true; try { localStorage.setItem("i
 if (!inviteVue()) setTimeout(() => { if (viewer.hidden) invite.hidden = false; }, 1500);
 $("invite-fermer").addEventListener("click", inviteFermer);
 invite.querySelector("a").addEventListener("click", inviteFermer);
+
+// carrousels légers (journaux de bord) : flèches, points, défilement tactile natif
+document.querySelectorAll("[data-carousel]").forEach((c) => {
+  const track = c.querySelector(".c-track"), slides = [...track.children];
+  const dots = c.querySelector(".c-dots"), prev = c.querySelector(".c-prev"), next = c.querySelector(".c-next");
+  slides.forEach(() => dots.appendChild(document.createElement("i")));
+  const label = document.createElement("span"); dots.appendChild(label);
+  const step = () => slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+  const at = () => Math.round(track.scrollLeft / step());
+  const update = () => {
+    const k = at();
+    [...dots.querySelectorAll("i")].forEach((d, j) => d.classList.toggle("on", j === k));
+    label.textContent = "Journal " + (k + 1) + " / " + slides.length;
+    prev.disabled = k === 0;
+    next.disabled = k === slides.length - 1;
+  };
+  const go = (k) => track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, k)) * step() });
+  prev.addEventListener("click", () => go(at() - 1));
+  next.addEventListener("click", () => go(at() + 1));
+  track.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+  track.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(at() - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); go(at() + 1); }
+  });
+  update();
+});
 
 // lien direct : monsite/#israel ouvre le lecteur
 const hash = location.hash.slice(1);

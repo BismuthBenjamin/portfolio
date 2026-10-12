@@ -19,7 +19,7 @@
     try { t = localStorage.getItem("theme") || "dark"; } catch (e) {}
     document.documentElement.dataset.theme = t;
   </script>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -60,6 +60,77 @@
   </section>
 
   <section class="dossier" id="dossiers">
+    <div class="d-text">
+      <h2>Peut-on localiser une photo grâce aux montagnes&nbsp;?</h2>
+      <p class="meta">Projet en cours, GEOINT, 2026 · journaux de bord 1 à 3</p>
+      <div class="d-body">
+        <p>
+          Un outil en construction qui cherche d'où une photo de montagne a été prise, à partir de
+          la seule forme du relief&nbsp;: la ligne de crête repérée sur la photo est comparée aux horizons
+          calculés depuis des dizaines de milliers de points de vue, grâce à un modèle numérique de terrain.
+        </p>
+        <p>
+          Le projet est raconté en journaux de bord. Le premier pose le projet&nbsp;: objectifs, ce qui existe
+          déjà, obstacles à prévoir. Le deuxième raconte le premier prototype. Le troisième le teste pour de vrai
+          et lui ajoute une intelligence artificielle entraînée sur mes propres paysages calculés&nbsp;: sur 10&nbsp;000&nbsp;km²
+          du Valais, sans aucun indice, il retrouve aujourd'hui une photo sur dix à moins d'un kilomètre.
+        </p>
+        <p class="sources">Données&nbsp;: Terrain Tiles (SRTM, EU-DEM), IGN RGE ALTI, OpenStreetMap, GeoPose3K, CrossLocate, Wikimedia Commons.</p>
+        <p class="sources">Outils utilisés&nbsp;: JavaScript, Python, PyTorch, DINOv2, Depth Anything V2, Claude Code.</p>
+        <p class="links">
+          Feuilleter le journal
+          <button type="button" data-open="journal-1">1</button>
+          <button type="button" data-open="journal-2">2</button>
+          <button type="button" data-open="journal-3">3</button>
+        </p>
+        <p class="links">
+          Télécharger en PDF
+          <a href="assets/pdf/ligne-de-crete-journal-1.pdf" download aria-label="PDF du journal 1, 5 Mo">1</a>
+          <a href="assets/pdf/ligne-de-crete-journal-2.pdf" download aria-label="PDF du journal 2, 3 Mo">2</a>
+          <a href="assets/pdf/ligne-de-crete-journal-3.pdf" download aria-label="PDF du journal 3, 6 Mo">3</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key carousel" data-carousel aria-roledescription="carrousel" aria-label="Journaux de bord">
+      <div class="c-track" tabindex="0">
+        <div class="c-slide" aria-roledescription="diapositive" aria-label="Journal de bord 1 sur 3">
+          <button class="plate" type="button" data-open="journal-1" data-page="0" aria-label="Ouvrir le journal de bord 1">
+            <img src="assets/img/journal-1/cover-01.jpg" alt="Couverture du journal de bord 1" width="900" height="1274">
+          </button>
+          <button class="plate key-page" type="button" data-open="journal-1" data-page="4" aria-label="Ouvrir le journal de bord 1 à cette page">
+            <img src="assets/img/journal-1/s-05.jpg" alt="Six vues de montagne, de la plus facile à localiser (crête nette) à l'impossible (désert plat)" width="1500" height="1061">
+          </button>
+          <p class="c-cap"><b>Journal de bord 1</b> · Élaboration du projet. Photos faciles, photos difficiles&nbsp;: de la crête nette au désert plat.</p>
+        </div>
+        <div class="c-slide" aria-roledescription="diapositive" aria-label="Journal de bord 2 sur 3">
+          <button class="plate" type="button" data-open="journal-2" data-page="0" aria-label="Ouvrir le journal de bord 2">
+            <img src="assets/img/journal-2/cover-01.jpg" alt="Couverture du journal de bord 2" width="900" height="1274" loading="lazy">
+          </button>
+          <button class="plate key-page show-right" type="button" data-open="journal-2" data-page="3" aria-label="Ouvrir le journal de bord 2 à cette page">
+            <img src="assets/img/journal-2/s-04.jpg" alt="Carte : points autour du Gornergrat d'où l'horizon ressemble presque exactement à celui du vrai point de vue" width="1500" height="1061" loading="lazy">
+          </button>
+          <p class="c-cap"><b>Journal de bord 2</b> · Premier prototype. Les sosies du Gornergrat&nbsp;: d'où l'horizon ressemble presque à celui du vrai point de vue.</p>
+        </div>
+        <div class="c-slide" aria-roledescription="diapositive" aria-label="Journal de bord 3 sur 3">
+          <button class="plate" type="button" data-open="journal-3" data-page="0" aria-label="Ouvrir le journal de bord 3">
+            <img src="assets/img/journal-3/cover-01.jpg" alt="Couverture du journal de bord 3" width="900" height="1274" loading="lazy">
+          </button>
+          <button class="plate key-page show-right" type="button" data-open="journal-3" data-page="1" aria-label="Ouvrir le journal de bord 3 à cette page">
+            <img src="assets/img/journal-3/s-02.jpg" alt="Carte : photos de test dans le Valais et l'Oberland bernois" width="1500" height="1061" loading="lazy">
+          </button>
+          <p class="c-cap"><b>Journal de bord 3</b> · Mesurer pour de vrai, puis apprendre à une IA. Les photos de test du Valais.</p>
+        </div>
+      </div>
+      <div class="c-nav">
+        <button type="button" class="c-prev" aria-label="Journal précédent">&larr;</button>
+        <span class="c-dots" aria-hidden="true"></span>
+        <button type="button" class="c-next" aria-label="Journal suivant">&rarr;</button>
+      </div>
+    </figure>
+  </section>
+
+  <section class="dossier">
     <div class="d-text">
       <h2>À quel rythme s'étend la mine de Rubaya&nbsp;?</h2>
       <p class="meta">GEOINT, images satellite, Nord-Kivu, 2026 · 18 pages, 6 figures</p>
@@ -262,6 +333,6 @@
   </p>
 </aside>
 
-<script src="app.js?v=2"></script>
+<script src="app.js?v=5"></script>
 </body>
 </html>

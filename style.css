@@ -161,3 +161,18 @@ body.lock{overflow:hidden}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
 }
+/* carrousel léger des journaux de bord : une diapositive = couverture + double page clé */
+.key.carousel{display:block}
+.c-track{display:flex;gap:.8rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;outline-offset:4px}
+.c-track::-webkit-scrollbar{display:none}
+.c-slide{flex:0 0 86%;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;gap:.6rem;align-content:start}
+.c-cap{grid-column:1/-1;margin-top:.2rem;font-family:var(--sans);font-size:.88rem;line-height:1.4;color:var(--grey)}
+.c-cap b{color:var(--ink);font-weight:600}
+.key .key-page.show-right img{margin-left:-100%}
+.c-nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:.9rem;font-family:var(--sans)}
+.c-nav button{width:2.6rem;height:2.6rem;border-radius:50%;border:1.5px solid var(--red);font-size:1.15rem;line-height:1;color:var(--red);transition:background .15s,color .15s}
+.c-nav button:not(:disabled):hover{background:var(--red);color:var(--paper)}
+.c-nav button:disabled{color:var(--line);border-color:var(--line);cursor:default}
+.c-dots{display:flex;align-items:center;gap:.6rem;font-size:.9rem;color:var(--grey)}
+.c-dots i{width:.65rem;height:.65rem;border-radius:50%;background:var(--line)}
+.c-dots i.on{background:var(--red)}
