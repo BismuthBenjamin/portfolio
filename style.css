@@ -45,6 +45,8 @@ h2{font-weight:600;letter-spacing:-.005em}
 .top nav{display:flex;gap:1.4rem;font-family:var(--sans);font-size:.95rem}
 .top nav a{text-decoration:none;color:var(--grey)}
 .top nav a:hover{color:var(--red)}
+.top nav a.nav-carte{color:var(--red);font-weight:600}
+.top nav a.nav-carte:hover{text-decoration:underline;text-underline-offset:.25em}
 .top-right{display:flex;align-items:center;gap:1.4rem}
 .theme{display:grid;place-items:center;width:2rem;height:2rem;margin:-.4rem -.4rem -.4rem 0;color:var(--grey);border-radius:50%}
 .theme:hover{color:var(--ink);background:var(--line)}
@@ -66,8 +68,9 @@ h2{font-weight:600;letter-spacing:-.005em}
 .cta:hover{background:var(--btn-hover);border-color:var(--btn-hover);color:#fff}
 .cta.ghost{background:transparent;color:var(--red)}
 .cta.ghost:hover{background:var(--btn);color:#fff}
-.intro-next{margin-top:1.4rem;font-family:var(--sans);font-size:.95rem;color:var(--grey)}
+.intro-next{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;margin-top:1.4rem;font-family:var(--sans);font-size:.95rem;color:var(--grey)}
 .intro-next a{color:inherit}
+.intro-next a:first-child{color:var(--red);font-weight:600}
 .cv-page{box-shadow:0 0 0 1px var(--line),0 12px 30px -12px var(--shadow)}
 
 /* dossiers */
@@ -94,6 +97,9 @@ h2{font-weight:600;letter-spacing:-.005em}
 .links{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;font-family:var(--sans);font-size:1rem}
 .links button,.links a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:.2em;color:var(--red)}
 .links button:hover,.links a:hover{text-decoration-color:currentColor}
+.links{align-items:center}
+.links a.cta{padding:.45rem .95rem;font-size:.95rem;color:#fff;text-decoration:none}
+.links a.cta:hover{color:#fff}
 
 /* à propos, contact */
 .about{display:grid;grid-template-columns:1fr 2fr;gap:1rem clamp(1.5rem,4vw,3rem);padding:clamp(2.5rem,5vw,4rem) var(--pad);border-top:1px solid var(--line)}
@@ -146,7 +152,6 @@ body.lock{overflow:hidden}
   .dossier,.about,.intro{grid-template-columns:1fr}
   .key{max-width:26rem}
   .cv-page{width:min(100%,18rem)}
-  .intro-next{display:none}
   .top nav{gap:1rem}
   .v-stage{padding:.25rem}
   .v-nav{width:2.2rem;background:rgba(0,0,0,.35)}
@@ -156,7 +161,7 @@ body.lock{overflow:hidden}
   .brand{font-size:1rem;white-space:nowrap}
   .top nav{gap:.8rem;font-size:.9rem;white-space:nowrap}
   .top-right{gap:.6rem}
-  .top nav a:nth-child(3){display:none}
+  .top nav a:nth-child(3),.top nav a:nth-child(4),.nav-carte span{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}

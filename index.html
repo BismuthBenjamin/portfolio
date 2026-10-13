@@ -19,7 +19,7 @@
     try { t = localStorage.getItem("theme") || "dark"; } catch (e) {}
     document.documentElement.dataset.theme = t;
   </script>
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -28,6 +28,7 @@
   <div class="top-right">
     <nav>
       <a href="#cv">CV</a>
+      <a class="nav-carte" href="carte.html?v=5">Carte<span> interactive</span></a>
       <a href="#dossiers">Dossiers</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
@@ -52,7 +53,10 @@
         <button class="cta" type="button" data-open="cv">Voir mon CV</button>
         <a class="cta ghost" href="assets/pdf/cv-benjamin-bismuth.pdf" download>Télécharger le CV (PDF)</a>
       </p>
-      <p class="intro-next"><a href="#dossiers">Mes dossiers ci-dessous</a></p>
+      <p class="intro-next">
+        <a href="carte.html?v=5">Explorer la carte interactive du Val-de-Marne</a>
+        <a href="#dossiers">Voir mes dossiers</a>
+      </p>
     </div>
     <button class="plate cv-page" type="button" data-open="cv">
       <img src="assets/img/cv/cv-01.jpg" alt="Aperçu du CV, cliquer pour l'agrandir" width="1200" height="1697">
@@ -60,6 +64,42 @@
   </section>
 
   <section class="dossier" id="dossiers">
+    <div class="d-text">
+      <h2>À quel rythme s'étend la mine de Rubaya&nbsp;?</h2>
+      <p class="meta">GEOINT, images satellite, Nord-Kivu, 2026 · 18 pages, 6 figures</p>
+      <div class="d-body">
+        <p>
+          Rubaya est une mine de coltan de l'est du Congo, contrôlée par le M23 depuis avril 2024.
+          Le dossier teste une idée souvent avancée&nbsp;: un groupe armé qui tient une mine la fait
+          creuser davantage. Il mesure sur des images Sentinel-2 la surface gagnée chaque année,
+          de 2021 à 2025.
+        </p>
+        <p>
+          La mine gagne 30 à 60 hectares, dont 33,5 entre l'été 2024 et l'été 2025, presque quatre
+          fois plus que les années précédentes. Mais l'accélération ne commence qu'après la prise de
+          Goma, neuf mois après celle de la mine, et le prix du coltan ne l'explique pas.
+        </p>
+        <p class="sources">Données&nbsp;: Copernicus Sentinel-2, Centre for Information Resilience, USGS.</p>
+        <p class="sources">Outils utilisés&nbsp;: Google Earth Engine, Excel, Graph, Datawrapper, Illustrator, InDesign.</p>
+        <p class="links">
+          <button type="button" data-open="rubaya">Feuilleter le dossier</button>
+          <a href="assets/pdf/rubaya.pdf" download>Télécharger le PDF (4&nbsp;Mo)</a>
+        </p>
+      </div>
+    </div>
+
+    <figure class="key">
+      <button class="plate" type="button" data-open="rubaya" data-page="0" aria-label="Ouvrir le dossier">
+        <img src="assets/img/rubaya/cover-01.jpg" alt="Couverture du dossier" width="826" height="1169">
+      </button>
+      <button class="plate key-page" type="button" data-open="rubaya" data-page="4" aria-label="Ouvrir le dossier à cette page">
+        <img src="assets/img/rubaya/s-05.jpg" alt="Image satellite : en jaune, les terrains couverts de végétation en 2021 et nus en 2025 autour de la mine de Rubaya" width="1500" height="1061">
+      </button>
+      <figcaption>Figure 3. En jaune, les terrains couverts de végétation en 2021 et nus en 2025.</figcaption>
+    </figure>
+  </section>
+
+  <section class="dossier" id="ligne-de-crete">
     <div class="d-text">
       <h2>Peut-on localiser une photo grâce aux montagnes&nbsp;?</h2>
       <p class="meta">Projet en cours, GEOINT, 2026 · journaux de bord 1 à 3</p>
@@ -132,42 +172,6 @@
 
   <section class="dossier">
     <div class="d-text">
-      <h2>À quel rythme s'étend la mine de Rubaya&nbsp;?</h2>
-      <p class="meta">GEOINT, images satellite, Nord-Kivu, 2026 · 18 pages, 6 figures</p>
-      <div class="d-body">
-        <p>
-          Rubaya est une mine de coltan de l'est du Congo, contrôlée par le M23 depuis avril 2024.
-          Le dossier teste une idée souvent avancée&nbsp;: un groupe armé qui tient une mine la fait
-          creuser davantage. Il mesure sur des images Sentinel-2 la surface gagnée chaque année,
-          de 2021 à 2025.
-        </p>
-        <p>
-          La mine gagne 30 à 60 hectares, dont 33,5 entre l'été 2024 et l'été 2025, presque quatre
-          fois plus que les années précédentes. Mais l'accélération ne commence qu'après la prise de
-          Goma, neuf mois après celle de la mine, et le prix du coltan ne l'explique pas.
-        </p>
-        <p class="sources">Données&nbsp;: Copernicus Sentinel-2, Centre for Information Resilience, USGS.</p>
-        <p class="sources">Outils utilisés&nbsp;: Google Earth Engine, Excel, Graph, Datawrapper, Illustrator, InDesign.</p>
-        <p class="links">
-          <button type="button" data-open="rubaya">Feuilleter le dossier</button>
-          <a href="assets/pdf/rubaya.pdf" download>Télécharger le PDF (4&nbsp;Mo)</a>
-        </p>
-      </div>
-    </div>
-
-    <figure class="key">
-      <button class="plate" type="button" data-open="rubaya" data-page="0" aria-label="Ouvrir le dossier">
-        <img src="assets/img/rubaya/cover-01.jpg" alt="Couverture du dossier" width="826" height="1169">
-      </button>
-      <button class="plate key-page" type="button" data-open="rubaya" data-page="4" aria-label="Ouvrir le dossier à cette page">
-        <img src="assets/img/rubaya/s-05.jpg" alt="Image satellite : en jaune, les terrains couverts de végétation en 2021 et nus en 2025 autour de la mine de Rubaya" width="1500" height="1061">
-      </button>
-      <figcaption>Figure 3. En jaune, les terrains couverts de végétation en 2021 et nus en 2025.</figcaption>
-    </figure>
-  </section>
-
-  <section class="dossier">
-    <div class="d-text">
       <h2>Trois Israël et une frontière invisible</h2>
       <p class="meta">Géographie électorale, 2026 · 28 pages, 10 cartes</p>
       <div class="d-body">
@@ -218,7 +222,7 @@
         <p class="sources">Données&nbsp;: Insee, Institut Paris Region, IGN.</p>
         <p class="sources">Outils utilisés&nbsp;: QGIS.</p>
         <p class="links">
-          <a href="carte.html?v=5">Explorer la carte interactive</a>
+          <a class="cta petit" href="carte.html?v=5">Explorer la carte interactive</a>
           <button type="button" data-open="canicule">Feuilleter le dossier</button>
           <a href="assets/pdf/canicule.pdf" download>Télécharger le PDF (13&nbsp;Mo)</a>
         </p>
