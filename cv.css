@@ -34,6 +34,7 @@ ul{list-style:none}
 .bandeau h1{font-size:19pt;font-weight:700;line-height:1.08;letter-spacing:.02em;text-transform:uppercase}
 .nom{margin-top:1.2mm;font-family:var(--serif);font-size:13.5pt;font-weight:600}
 .contact{display:flex;flex-wrap:wrap;gap:.4mm 4mm;margin-top:2.4mm;font-size:9.2pt;color:#d9d2c8}
+.contact a{color:inherit;text-decoration:underline;text-decoration-color:rgba(217,210,200,.5);text-underline-offset:.5mm}
 .photo{flex:none;width:25mm;height:25mm;object-fit:cover;object-position:50% 30%;border-radius:50%;border:.8mm solid var(--cream)}
 
 /* ---------- rubriques ---------- */

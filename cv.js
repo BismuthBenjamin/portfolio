@@ -18,13 +18,18 @@
       ${e.cours ? `<p class="cours"><b>Cours :</b> ${txt(e.cours)}</p>` : ""}
     </div>`;
 
+  // un contact est un texte, ou { texte, lien } pour un lien cliquable (il le reste dans le PDF)
+  const contact = (c) => (c.lien
+    ? `<span><a href="${esc(c.lien)}" rel="noopener">${esc(c.texte)}</a></span>`
+    : `<span>${esc(c)}</span>`);
+
   // bandeau : poste recherché, nom, contact, photo
   const bandeau = `
     <header class="bandeau">
       <div>
         <h1>${esc(CV.poste)}</h1>
         <p class="nom">${esc(CV.nom)}</p>
-        <p class="contact">${CV.contact.map((c) => `<span>${esc(c)}</span>`).join("")}</p>
+        <p class="contact">${CV.contact.map(contact).join("")}</p>
       </div>
       ${CV.photo ? `<img class="photo" src="${esc(CV.photo)}" alt="Photo de ${esc(CV.nom)}">` : ""}
     </header>`;

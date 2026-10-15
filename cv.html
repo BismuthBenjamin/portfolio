@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cv.css?v=3">
+  <link rel="stylesheet" href="cv.css?v=4">
 </head>
 <body>
 
@@ -25,11 +25,12 @@ const CV = {
   poste: "Analyste géomatique et GEOINT",   // le grand titre : le poste recherché
   nom: "Benjamin Bismuth",
   photo: "assets/img/cv/photo.jpg",              // mettre "" pour un CV sans photo
-  contact: [
+  contact: [                                     // lien cliquable : { texte: "...", lien: "https://..." }
     "BismuthSpeTD@gmail.com",
     "06 65 19 97 38",
     "Champigny-sur-Marne (94)",
-    "linkedin.com/in/benjamin-bismuth"
+    { texte: "linkedin.com/in/benjamin-bismuth-745938334", lien: "https://www.linkedin.com/in/benjamin-bismuth-745938334/" },
+    { texte: "bismuthbenjamin.github.io/portfolio", lien: "https://bismuthbenjamin.github.io/portfolio/" }
   ],
 
   // ---------- profil ----------
@@ -72,12 +73,12 @@ const CV = {
   competences: [],
 
   logiciels: [
-    { nom: "QGIS, ArcGIS Pro", usage: "cartographie et SIG" },
-    { nom: "Google Earth Engine, Copernicus Browser", usage: "imagerie satellite" },
-    { nom: "InDesign, Illustrator, Photoshop", usage: "mise en page" },
-    { nom: "Excel, Datawrapper, Grapham", usage: "données et graphiques" },
-    { nom: "Python", usage: "bases" },
-    { nom: "Claude Code, Codex", usage: "développement assisté par IA (scripts, traitements de données)" }
+    { nom: "ArcGIS Pro, QGIS, Graphab", usage: "SIG et analyse spatiale" },
+    { nom: "Python", usage: "préparation de données, scripts" },
+    { nom: "Google Earth Engine, Copernicus Browser", usage: "imagerie Sentinel-1 et 2" },
+    { nom: "Excel, Word, PowerPoint, Datawrapper", usage: "données, notes et graphiques" },
+    { nom: "InDesign, Illustrator, Photoshop", usage: "mise en page de cartes et de rapports" },
+    { nom: "Claude Code, Codex", usage: "scripts assistés par IA" }
   ],
 
   langues: ["Anglais C1", "Italien B2"],
@@ -93,6 +94,6 @@ const CV = {
 
 <main class="page" id="cv"></main>
 
-<script src="cv.js?v=3"></script>
+<script src="cv.js?v=4"></script>
 </body>
 </html>
