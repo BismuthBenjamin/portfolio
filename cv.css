@@ -42,6 +42,8 @@ ul{list-style:none}
 .bloc h2 span{padding:.5mm 2.2mm;margin-left:-2.2mm;background:var(--surligne)}
 .profil{padding:8.5mm 15mm 0}
 .profil p{font-size:10.2pt;line-height:1.5;color:#3a3634}
+.profil .renvoi{margin-top:1.6mm;font-size:9.6pt;color:var(--grey)}
+.profil .renvoi a{color:var(--red);font-weight:600;text-decoration:underline;text-decoration-color:rgba(142,27,27,.35);text-underline-offset:.5mm}
 
 .colonnes{display:grid;grid-template-columns:minmax(0,1fr) 57mm;gap:0 10mm;padding:8.5mm 15mm 0}
 .bloc + .bloc{margin-top:8.5mm}

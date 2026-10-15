@@ -34,6 +34,11 @@
       ${CV.photo ? `<img class="photo" src="${esc(CV.photo)}" alt="Photo de ${esc(CV.nom)}">` : ""}
     </header>`;
 
+  // renvoi vers le portfolio, affiché sous le profil : { texte, lien, lienTexte }
+  const renvoi = CV.renvoi
+    ? `<p class="renvoi">${esc(CV.renvoi.texte)} <a href="${esc(CV.renvoi.lien)}" rel="noopener">${esc(CV.renvoi.lienTexte)}</a></p>`
+    : "";
+
   const principal = bloc("Expérience professionnelle", CV.experience.map(entree).join(""))
     + bloc("Formation", CV.formation.map(entree).join(""));
 
@@ -47,6 +52,6 @@
   if (plein(CV.interets)) cote += bloc("Intérêts", liste(CV.interets));
 
   document.getElementById("cv").innerHTML = bandeau
-    + `<div class="profil">${bloc("Profil", `<p>${txt(CV.profil)}</p>`)}</div>`
+    + `<div class="profil">${bloc("Profil", `<p>${txt(CV.profil)}</p>${renvoi}`)}</div>`
     + `<div class="colonnes"><div class="principal">${principal}</div><aside class="cote">${cote}</aside></div>`;
 })();

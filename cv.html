@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="cv.css?v=4">
+  <link rel="stylesheet" href="cv.css?v=5">
 </head>
 <body>
 
@@ -22,11 +22,11 @@
    ============================================================================ */
 const CV = {
   // ---------- bandeau du haut ----------
-  poste: "Analyste géomatique et GEOINT",   // le grand titre : le poste recherché
+  poste: "Analyste GEOINT et IMINT",   // le grand titre : le poste recherché
   nom: "Benjamin Bismuth",
   photo: "assets/img/cv/photo.jpg",              // mettre "" pour un CV sans photo
   contact: [                                     // lien cliquable : { texte: "...", lien: "https://..." }
-    "BismuthSpeTD@gmail.com",
+    "Benjamin.bismuth2003@gmail.com",
     "06 65 19 97 38",
     "Champigny-sur-Marne (94)",
     { texte: "linkedin.com/in/benjamin-bismuth-745938334", lien: "https://www.linkedin.com/in/benjamin-bismuth-745938334/" },
@@ -34,7 +34,10 @@ const CV = {
   ],
 
   // ---------- profil ----------
-  profil: "Actuellement en master 1 à Lyon 3 et Saint-Étienne, je recherche une alternance à partir de septembre 2027 pour le master 2 Géopolitique-GEOINT de Sorbonne Université. J'y apporte une formation de géographe passée par les classes préparatoires et une pratique régulière de la cartographie et de l'imagerie satellite.",
+  profil: "Géographe formé en khâgne puis en géomatique, je réalise des analyses GEOINT à partir d'images satellite : détection de changements sur Sentinel-2 (extension d'une mine tenue par le M23 au Nord-Kivu), géolocalisation de photos par le relief. En master 1 SENTINELLES à Lyon 3 et Saint-Étienne, je recherche une alternance à partir de septembre 2027 pour le master 2 Géopolitique-GEOINT de Sorbonne Université.",
+
+  // renvoi vers les dossiers du portfolio, affiché sous le profil
+  renvoi: { texte: "Dossiers GEOINT complets, avec cartes et méthodes, sur mon portfolio :", lien: "https://bismuthbenjamin.github.io/portfolio/#dossiers", lienTexte: "bismuthbenjamin.github.io/portfolio" },
 
   // ---------- colonne principale ----------
   experience: [
@@ -68,14 +71,14 @@ const CV = {
   ],
 
   // ---------- colonne de droite ----------
-  savoirEtre: ["Rigueur et méthode", "Esprit d'équipe", "Analyse et synthèse", "Aisance rédactionnelle", "Curiosité", "Autonomie"],
+  savoirEtre: ["Sens de l'observation", "Rigueur et méthode", "Analyse et synthèse", "Aisance rédactionnelle", "Discrétion", "Curiosité"],
 
   competences: [],
 
   logiciels: [
     { nom: "ArcGIS Pro, QGIS, Graphab", usage: "SIG et analyse spatiale" },
     { nom: "Python", usage: "préparation de données, scripts" },
-    { nom: "Google Earth Engine, Copernicus Browser", usage: "imagerie Sentinel-1 et 2" },
+    { nom: "Google Earth Engine, Copernicus Browser", usage: "imagerie optique et radar (Sentinel-2 et 1)" },
     { nom: "Excel, Word, PowerPoint, Datawrapper", usage: "données, notes et graphiques" },
     { nom: "InDesign, Illustrator, Photoshop", usage: "mise en page de cartes et de rapports" },
     { nom: "Claude Code, Codex", usage: "scripts assistés par IA" }
@@ -83,7 +86,7 @@ const CV = {
 
   langues: ["Anglais C1", "Italien B2"],
 
-  interets: ["Veille géopolitique et renseignement en sources ouvertes", "Cartographie participative (OpenStreetMap)", "Science-fiction et fantasy"]
+  interets: ["Veille géopolitique et renseignement en sources ouvertes"]
 };
 </script>
 
@@ -94,6 +97,6 @@ const CV = {
 
 <main class="page" id="cv"></main>
 
-<script src="cv.js?v=4"></script>
+<script src="cv.js?v=5"></script>
 </body>
 </html>
